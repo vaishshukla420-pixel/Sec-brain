@@ -71,6 +71,32 @@ exists and fall back to the default branch after a merge.
 Also available: **local cron** via `scripts/ingest.sh` — lock-protected,
 exits instantly when the inbox is empty, safe to run hourly.
 
+## Feeding the brain from other repos
+
+The brain is ONE vault — this repo. Other repos don't stream in by
+themselves; knowledge must land in `raw/`. Three bridges, from manual to
+automatic:
+
+1. **From anywhere, no setup:** add any file to `raw/` via GitHub web or
+   mobile → auto-ingested by the `brain-ingest` workflow.
+2. **From any Claude session in another repo (one line of setup):** put
+   this in that repo's `CLAUDE.md`:
+   *"When a session produces durable knowledge — research findings,
+   decisions, lessons learned — distill it into a short markdown note and
+   commit it to `vaishshukla420-pixel/Sec-brain` under `raw/` (add that
+   repo to the session if needed)."*
+   Every Claude session working there then feeds this brain as a side
+   effect of normal work.
+3. **Fully automatic bridge (one-time, per repo):** add a small GitHub
+   Action to the other repo that copies its `notes/` or `research/` folder
+   into this repo's `raw/` on every push (needs a token secret with write
+   access here). Everything committed to that folder then flows in with
+   zero clicks.
+
+Rule of thumb: feed the brain *knowledge*, not code — findings, decisions,
+results, reasons. Code stays in its own repo; the distilled "why" lives
+here, where it cross-links with everything else you know.
+
 ## Safety rails (enforced by the schema)
 
 - **Git is the undo button** — the agent commits after every ingest/lint/review,
