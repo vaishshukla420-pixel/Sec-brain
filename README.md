@@ -71,6 +71,9 @@ exists and fall back to the default branch after a merge.
 Also available: **local cron** via `scripts/ingest.sh` — lock-protected,
 exits instantly when the inbox is empty, safe to run hourly.
 
+> **Full setup guide — laptop, other repos, phone, sharing with a
+> teammate: see [SETUP.md](SETUP.md).**
+
 ## Feeding the brain from other repos
 
 The brain is ONE vault — this repo. Other repos don't stream in by
