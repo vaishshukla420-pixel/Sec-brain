@@ -36,6 +36,8 @@ jobs:
       - name: Lint, review, gap-fill
         uses: anthropics/claude-code-action@v1
         with:
+          # Subscription instead of API key: see the note in brain-ingest.yml
+          # (claude setup-token → CLAUDE_CODE_OAUTH_TOKEN secret).
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: |
             Read CLAUDE.md and follow it exactly. Do three things in order:

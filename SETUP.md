@@ -224,13 +224,23 @@ Claude account. Full move, ~10 minutes:
    git commit -am "docs: repoint vault references" && git push
    ```
    (Or open Claude Code in the folder and just ask it to do this.)
-4. **Re-arm automation.** Secrets never copy: in the new repo →
-   Settings → Secrets and variables → Actions → add `ANTHROPIC_API_KEY`
-   (an API key from console.anthropic.com — this is what the cloud
-   auto-ingest bills to; interactive laptop use runs on the Claude
-   subscription instead and needs no key). Check Settings → Actions is
-   enabled. Optional: skip the key entirely and ingest interactively or
-   via `scripts/ingest.sh` on a local cron.
+4. **Re-arm automation — three options, by budget:**
+   - **No cloud, zero extra cost (fine!):** skip all secrets and disable
+     the two workflows (repo → Actions → each workflow → "···" →
+     Disable) so pushes to `raw/` don't show failed runs. Files dropped
+     in `raw/` simply wait; the next interactive session notices them
+     (the schema ingests whenever `raw/` has files), or a local cron
+     running `scripts/ingest.sh` sweeps hourly on your subscription
+     while the laptop is on.
+   - **Cloud on your subscription (no API billing):** run
+     `claude setup-token` locally, save the output as a
+     `CLAUDE_CODE_OAUTH_TOKEN` repository secret, and swap the
+     credential line in both workflow files as commented there. Runs
+     count against your plan limits.
+   - **Cloud on API billing:** add `ANTHROPIC_API_KEY`
+     (console.anthropic.com) as the secret — pay per run.
+   Whichever you choose, check Settings → Actions is enabled/disabled
+   to match.
 5. **Verify.** `python3 scripts/vault_check.py` (expect: OK), open
    `claude` in the folder and ask it something, and if the key was
    added: upload a test file to `raw/` via GitHub web and watch the

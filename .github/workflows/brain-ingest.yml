@@ -53,6 +53,12 @@ jobs:
         if: steps.inbox.outputs.pending == 'true'
         uses: anthropics/claude-code-action@v1
         with:
+          # No API key? A Claude Pro/Max subscription works instead: run
+          # `claude setup-token` on your machine, save the output as a
+          # CLAUDE_CODE_OAUTH_TOKEN repository secret, and replace the
+          # line below with:
+          #   claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # (Runs then count against your plan limits, not API billing.)
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: |
             Read CLAUDE.md and follow it exactly. Ingest every file in raw/
