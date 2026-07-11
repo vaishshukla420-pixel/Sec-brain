@@ -36,6 +36,7 @@ crypto came *from* the privacy movement ([[pre-bitcoin-digital-cash]]).
 - [[crypto-hacks]] — laundering, the abuse case
 - [[crypto-regulation]] — the sanctioning-code precedent fight
 - [[layer-2-scaling]] — ZK math shared with scaling
+- [[crypto-2026-state]] — the 2025-26 privacy rotation in numbers
 - [[crypto]] — domain hub
 
 ## Source

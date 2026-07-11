@@ -38,6 +38,7 @@ risk: money legos stack, and so do their failure modes.
 - [[stablecoins]] — the base money
 - [[smart-contract-security]] — the permanent red-team
 - [[ethereum]] — the deepest DeFi venue
+- [[crypto-2026-state]] — current TVL and category data
 - [[crypto]] — domain hub
 
 ## Source

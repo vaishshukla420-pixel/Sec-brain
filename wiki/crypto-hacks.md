@@ -35,6 +35,7 @@ counted ~$2.2B stolen in 2024; 2025 blew past that on Bybit alone.
 - [[cefi-exchanges]] — hot wallets, the perennial target
 - [[privacy-tech]] — where stolen funds go to wash
 - [[crypto-scams]] — retail-scale crime, same economy
+- [[crypto-2026-state]] — the current-year crime ledger
 - [[crypto]] — domain hub
 
 ## Source

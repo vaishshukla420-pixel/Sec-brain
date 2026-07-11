@@ -36,6 +36,7 @@ memecoin froth marks late-cycle [[crypto-market-cycles]] territory.
 - [[crypto-scams]] — rug pulls live here
 - [[layer-1-platforms]] — Solana's growth engine this cycle
 - [[crypto-market-cycles]] — froth gauge role
+- [[crypto-2026-state]] — the sector's -82% deflation, current data
 - [[crypto]] — domain hub
 
 ## Source
