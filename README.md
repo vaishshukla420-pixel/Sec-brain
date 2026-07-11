@@ -51,18 +51,22 @@ compute attaches to it on demand.
 
 ## Automation
 
-Two scheduled Routines are armed for this vault (pause or edit them anytime
-from the Claude Code app):
+Two GitHub Actions workflows run the loop hands-free
+(`.github/workflows/`):
 
-- **Ingest sweep — every 6 hours.** Pulls the repo, ingests anything waiting
-  in `raw/`, pushes the result. Empty inbox = the run stops immediately.
-- **Weekly lint + review + gap-fill — Mondays 09:00 IST.** Mechanical +
-  semantic lint, the weekly review digest (delivered by push + email), then
-  researches the week's single most important knowledge gap on the web and
-  files it as sourced synthesis pages (rules in `CLAUDE.md` → GAP-FILL).
+- **`brain-ingest`** — fires **instantly** on any push that touches `raw/`
+  (e.g. a file uploaded from your phone via GitHub's web UI), plus a safety
+  sweep every 6 hours. Empty inbox = the run exits immediately.
+- **`brain-weekly`** — Mondays 09:00 IST: mechanical + semantic lint, the
+  weekly review, then one self-feeding **gap-fill**: it researches the
+  week's most important knowledge gap on the web and files it as sourced
+  synthesis pages (rules in `CLAUDE.md` → GAP-FILL).
 
-The vault currently lives on branch `claude/implementability-review-99t3an`;
-the Routines target it and fall back to the default branch after a merge.
+**One-time setup:** add an `ANTHROPIC_API_KEY` repository secret
+(Settings → Secrets and variables → Actions → New repository secret).
+Without it the workflows stay dormant. The vault currently lives on branch
+`claude/implementability-review-99t3an`; scheduled runs hop to it while it
+exists and fall back to the default branch after a merge.
 
 Also available: **local cron** via `scripts/ingest.sh` — lock-protected,
 exits instantly when the inbox is empty, safe to run hourly.
