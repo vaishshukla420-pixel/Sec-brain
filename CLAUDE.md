@@ -7,6 +7,12 @@ programmer, this file is the spec. Follow it exactly, every session.
 At the start of a session, read `index.md` to orient. Do not bulk-read
 `wiki/` — locate pages through `index.md` and grep, then read only those.
 
+**Bootstrap check, every session start:** compare `git remote get-url
+origin` with the URL in `.brain-home`. If they differ — or the owner says
+"this is my copy, set it up" — this vault has been copied to a new
+account/machine: read `BOOTSTRAP.md` and offer to run the self-setup
+before anything else.
+
 ## Layout
 
 | Path | Role |

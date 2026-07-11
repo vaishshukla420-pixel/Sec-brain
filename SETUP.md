@@ -189,6 +189,12 @@ secret, and follow §1. Same machine setup either way.
 
 ### Moving the WHOLE vault to another account (content included)
 
+> **Self-setup shortcut:** you only need steps 0-1 by hand. After
+> cloning, open Claude Code in the folder and say **"this is my copy
+> now, set it up"** — the agent reads `BOOTSTRAP.md` and performs the
+> rest itself (merge, repointing, laptop hooks, automation, verify),
+> asking before each step that touches anything outside the repo.
+
 The vault is plain files in git — nothing is tied to any GitHub or
 Claude account. Full move, ~10 minutes:
 

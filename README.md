@@ -73,6 +73,10 @@ exits instantly when the inbox is empty, safe to run hourly.
 
 > **Full setup guide — laptop, other repos, phone, sharing with a
 > teammate: see [SETUP.md](SETUP.md).**
+>
+> **Cloned this vault to your own account?** Open Claude Code in the
+> folder and say *"this is my copy now, set it up"* — it self-installs
+> from [BOOTSTRAP.md](BOOTSTRAP.md).
 
 ## Feeding the brain from other repos
 
