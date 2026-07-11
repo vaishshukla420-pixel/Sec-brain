@@ -187,6 +187,49 @@ template / fork → they empty `wiki/`, `index.md` groups, and `log.md`
 (or keep the content as a starter), add their own `ANTHROPIC_API_KEY`
 secret, and follow §1. Same machine setup either way.
 
+### Moving the WHOLE vault to another account (content included)
+
+The vault is plain files in git — nothing is tied to any GitHub or
+Claude account. Full move, ~10 minutes:
+
+1. **Copy the repo.** On the new owner's laptop:
+   ```bash
+   git clone https://github.com/vaishshukla420-pixel/Sec-brain.git ~/Sec-brain
+   cd ~/Sec-brain
+   ```
+   Create a fresh repo in the new GitHub account (github.com/new —
+   **private recommended** for a personal brain; do NOT initialize it
+   with a README), then repoint and push everything:
+   ```bash
+   git remote set-url origin https://github.com/<NEW-USER>/Sec-brain.git
+   git push -u origin --all
+   ```
+   (Alternative: the old owner clicks Settings → Transfer ownership —
+   one click, moves history and Actions, but not secrets.)
+2. **Consolidate to main.** If the content lives on a working branch:
+   ```bash
+   git checkout main
+   git merge claude/implementability-review-99t3an   # fast-forwards
+   git push -u origin main
+   ```
+3. **Make it yours.** Replace the old account name in the docs:
+   ```bash
+   sed -i 's|vaishshukla420-pixel|<NEW-USER>|g' README.md SETUP.md
+   git commit -am "docs: repoint vault references" && git push
+   ```
+   (Or open Claude Code in the folder and just ask it to do this.)
+4. **Re-arm automation.** Secrets never copy: in the new repo →
+   Settings → Secrets and variables → Actions → add `ANTHROPIC_API_KEY`
+   (an API key from console.anthropic.com — this is what the cloud
+   auto-ingest bills to; interactive laptop use runs on the Claude
+   subscription instead and needs no key). Check Settings → Actions is
+   enabled. Optional: skip the key entirely and ingest interactively or
+   via `scripts/ingest.sh` on a local cron.
+5. **Verify.** `python3 scripts/vault_check.py` (expect: OK), open
+   `claude` in the folder and ask it something, and if the key was
+   added: upload a test file to `raw/` via GitHub web and watch the
+   `brain-ingest` Action process it.
+
 ---
 
 ## 5. Confidential work — read once
