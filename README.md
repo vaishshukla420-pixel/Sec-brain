@@ -49,12 +49,23 @@ The vault lives in this GitHub repo, so **git is the sync layer**:
 This replaces the "always-on VPS" setup entirely: state lives in the repo,
 compute attaches to it on demand.
 
-## Automation (optional)
+## Automation
 
-- **Local cron:** `scripts/ingest.sh` is lock-protected and exits instantly
-  when the inbox is empty — safe to run hourly.
-- **Claude Code on the web:** schedule a recurring session/Routine on this
-  repo with the prompt *"Ingest anything in raw/, then lint the wiki."*
+Two scheduled Routines are armed for this vault (pause or edit them anytime
+from the Claude Code app):
+
+- **Ingest sweep — every 6 hours.** Pulls the repo, ingests anything waiting
+  in `raw/`, pushes the result. Empty inbox = the run stops immediately.
+- **Weekly lint + review + gap-fill — Mondays 09:00 IST.** Mechanical +
+  semantic lint, the weekly review digest (delivered by push + email), then
+  researches the week's single most important knowledge gap on the web and
+  files it as sourced synthesis pages (rules in `CLAUDE.md` → GAP-FILL).
+
+The vault currently lives on branch `claude/implementability-review-99t3an`;
+the Routines target it and fall back to the default branch after a merge.
+
+Also available: **local cron** via `scripts/ingest.sh` — lock-protected,
+exits instantly when the inbox is empty, safe to run hourly.
 
 ## Safety rails (enforced by the schema)
 
