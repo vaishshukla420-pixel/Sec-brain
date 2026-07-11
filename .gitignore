@@ -1,0 +1,10 @@
+# Obsidian per-device state (open this repo as a vault freely; don't commit UI state)
+.obsidian/
+.trash/
+
+# Headless sweep artifacts
+.ingest.lock
+.ingest.log
+
+# OS noise
+.DS_Store
