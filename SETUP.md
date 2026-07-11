@@ -121,6 +121,44 @@ to Sec-brain stored as a secret in the project repo). Ask the brain to
 
 ---
 
+## 3b. Normal Claude chat (claude.ai / mobile app)
+
+Chat conversations don't auto-stream anywhere — and shouldn't (the brain
+wants distilled knowledge, not every conversation). Two doors:
+
+**Zero setup, always works:** at the end of a useful chat, say
+*"Summarize the durable knowledge from this conversation as a short
+markdown note I can file."* Copy the result → GitHub → this repo →
+`raw/` → Add file → paste → Commit (phone works fine). Auto-ingest does
+the rest. ~30 seconds.
+
+**One-time setup, then one phrase per chat:**
+
+1. claude.ai → Settings → Connectors → add the **GitHub** connector and
+   authorize your GitHub account with access to this repo. (On a
+   company-managed Claude account this may be admin-controlled — if the
+   connector isn't available, use the zero-setup door above.)
+2. Add to your claude.ai personal preferences / profile instructions:
+   *"I maintain a knowledge vault at github.com/vaishshukla420-pixel/Sec-brain.
+   When I say 'file this to my brain', distill this conversation's
+   durable knowledge into a markdown note and commit it via the GitHub
+   connector to the vault's `raw/` folder as `YYYY-MM-DD-<topic>.md`.
+   Never edit other folders."*
+3. Then in ANY chat: **"file this to my brain"** → the note lands in
+   `raw/` → the pipeline ingests it like anything else.
+
+**Reading the brain from chat:** with the connector, ask *"check my
+Sec-brain — read index.md and the relevant wiki pages — what do I know
+about X?"*. Even smoother: create a claude.ai **Project** called
+"Sec-brain" and sync this repo's `index.md` + `wiki/` into its project
+knowledge — every chat inside that Project answers from your brain
+automatically (re-sync after big ingests).
+
+Note: claude.ai's built-in "memory" is a separate, app-internal
+convenience — the vault is the durable, portable brain you own in git.
+
+---
+
 ## 4. Sharing the brain with a teammate/friend
 
 Two models — pick one:
